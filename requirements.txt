@@ -2,5 +2,5 @@ PIL
 Flask
 Gunicorn
 Tesseract
-Pillow==9.5.0
-pytesseract==0.3.10
+Pillow
+pytesseract
