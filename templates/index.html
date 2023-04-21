@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Text Extractor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f7f7f7;
+      }
+
+      .card {
+        margin-top: 2rem;
+        border: none;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        border-radius: 0.25rem 0.25rem 0 0;
+        padding: 1rem;
+      }
+
+      .card-header i {
+        margin-right: 0.5rem;
+      }
+
+      .card-body {
+        padding: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .custom-file-upload {
+        border-radius: 0.25rem;
+        background-color: #007bff;
+        color: white;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      .custom-file-upload:hover {
+        background-color: #0069d9;
+      }
+
+      .btn-extract {
+        border-radius: 0.25rem;
+        background-color: #007bff;
+        color: white;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .btn-extract:hover {
+        background-color: #0069d9;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-top: 2rem;
+        word-break: break-all;
+        font-size: 1rem;
+      }
+
+      .alert {
+        margin-top: 2rem;
+        margin-bottom: 0;
+      }
+
+      /* Responsive styles */
+      @media screen and (max-width: 576px) {
+        .card {
+          margin-top: 1rem;
+        }
+
+        .card-body {
+          padding: 1rem;
+        }
+
+        .custom-file-upload {
+          font-size: 0.8rem;
+          padding: 0.5rem;
+        }
+
+        .btn-extract {
+          font-size: 0.8rem;
+          padding: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-image"></i>
+              <span>Image Text Extractor</span>
+            </div>
+            <div class="card-body">
+              {% if error %}
+              <div class="alert alert-danger">{{ error }}</div>
+              {% endif %}
+              <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="file">Choose an image to upload:</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" name="file" id="file" class="custom-file-input">
+                      <label for="file" class="custom-file-upload">Choose File</label>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-extract"><i class="fas fa-file-export"></i> Extract Text</button>
+              </form>
+              {% if text %}
+              <pre>{{ text }}</pre>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.7.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/ocr@2.0.0"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
