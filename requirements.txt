@@ -3,3 +3,4 @@ Gunicorn
 Tesseract>=3.0.0
 Pillow
 pytesseract
+pip==23.1
