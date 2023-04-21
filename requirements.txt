@@ -1,6 +1,7 @@
+python==3.6.9
+pip==23.1
 Flask
 Gunicorn
-Tesseract
+Tesseract>=4.0.0
 Pillow
 pytesseract
-pip==23.1
