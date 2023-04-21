@@ -1,5 +1,5 @@
 Flask
 Gunicorn
-Tesseract>=4.0.0
+Tesseract>=3.0.0
 Pillow
 pytesseract
